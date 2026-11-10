@@ -142,8 +142,9 @@ def bitcoin_step(ots_path: str):
     ots = shutil.which("ots")
     if not ots:
         print(f"  Last step, on Bitcoin itself: pip install opentimestamps-client, then\n"
-              f"    ots upgrade {ots_path} && ots verify {ots_path}\n"
-              f"  (a fresh anchor shows 'pending' for a few hours until its Bitcoin block is mined)")
+              f"    ots verify {ots_path}\n"
+              f"  (proofs are completed on the server once their Bitcoin block is mined, usually within a few hours;\n"
+              f"   for a fresher one, run `ots upgrade {ots_path}` first)")
         return
     subprocess.run([ots, "upgrade", ots_path], check=False)
     r = subprocess.run([ots, "verify", ots_path], capture_output=True, text=True)
@@ -185,7 +186,8 @@ def cmd_chain(start: int, end: int | None):
 
 def cmd_anchor(day: str):
     probs, a = verify_anchor(day)
-    report(probs, f"the {day} anchor covers entries 1 to #{a['seq']}; its text, hash and proof match. Saved {a['files'][0]} and .ots.")
+    blk = f" The server reports it in Bitcoin block {a['bitcoin_block']}." if a.get("bitcoin_block") else " Its Bitcoin block is not confirmed yet."
+    report(probs, f"the {day} anchor covers entries 1 to #{a['seq']}; its text, hash and proof match. Saved {a['files'][0]} and .ots.{blk}")
     bitcoin_step(a["files"][1])
 
 

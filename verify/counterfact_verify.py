@@ -35,7 +35,7 @@ import urllib.request
 API = os.environ.get("COUNTERFACT_API", "https://mastyf-support--counterfact-api-api.us-east.modal.run")
 GENESIS = "0" * 64
 OTS_MAGIC = b"\x00OpenTimestamps\x00\x00Proof\x00\xbf\x89\xe2\xe8\x84\xe8\x92\x94"
-PAGE = 500                                            # the API returns at most 500 consecutive entries
+PAGE = 100                                            # entries per request (the API allows up to 500; 100 keeps each request short)
 
 
 def sha256(s) -> str:
@@ -85,20 +85,30 @@ def check_ots(ots: bytes, text: str) -> list[str]:
 def get(path: str, raw: bool = False):
     rq = urllib.request.Request(API + path, headers={"User-Agent": "counterfact-verify/1.0"})
     try:
-        with urllib.request.urlopen(rq, timeout=60) as r:
-            data = r.read()
+        for attempt in range(3):
+            try:
+                with urllib.request.urlopen(rq, timeout=120) as r:
+                    data = r.read()
+                break
+            except (TimeoutError, urllib.error.URLError) as ex:
+                if isinstance(ex, urllib.error.HTTPError) or attempt == 2:
+                    raise
     except urllib.error.HTTPError as ex:
         try:
             msg = json.loads(ex.read()).get("detail", "")
         except Exception:
             msg = ""
         sys.exit(f"API error {ex.code} for {path}: {msg}")
+    except (TimeoutError, urllib.error.URLError) as ex:
+        sys.exit(f"Couldn't reach the API for {path}: {ex}")
     return data if raw else json.loads(data)
 
 
 def fetch_range(start: int, end: int) -> list[dict]:
     out = []
     for a in range(start, end + 1, PAGE):
+        if end - start >= PAGE:
+            print(f"  fetching entries {a} to {min(end, a + PAGE - 1)} of {end}…", file=sys.stderr)
         out += get(f"/v1/ledger/range?start={a}&end={min(end, a + PAGE - 1)}")["entries"]
     return out
 

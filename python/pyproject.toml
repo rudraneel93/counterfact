@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "counterfact"
+version = "0.2.0"
+description = "Did your change really work? Causal effect of a price change, campaign or policy on any time series."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [{ name = "Rudraneel Das" }]
+keywords = ["causal inference", "time series", "causal impact", "counterfactual", "marketing measurement", "pricing"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = []
+
+[project.optional-dependencies]
+pandas = ["pandas>=1.3"]
+plot = ["matplotlib>=3.5"]
+local = ["torch>=2.0", "numpy>=1.22", "huggingface_hub>=0.20"]
+
+[project.urls]
+Homepage = "https://counterfact-site.vercel.app"
+"Open model" = "https://huggingface.co/Rudraneel93/counterfact-v2"
+RapidAPI = "https://rapidapi.com/RudraneelDas/api/counterfact"

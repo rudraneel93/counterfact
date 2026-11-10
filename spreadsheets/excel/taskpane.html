@@ -1,0 +1,10 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Counterfact</title>
+<script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+<style>body{font-family:Segoe UI,system-ui,sans-serif;padding:16px;color:#1b1d26;line-height:1.5}code{background:#f1f2f6;padding:2px 5px;border-radius:4px}</style></head>
+<body><h2>Counterfact</h2>
+<p><code>=CF.EFFECT(B2:B60, 46, C2:E60)</code> gives the verdict, effect per period, likely range and effect in %.</p>
+<p><code>=CF.WITHOUT(B2:B60, 46, C2:E60)</code> gives what the metric would have been without the change.</p>
+<p><code>46</code> is the row (counted from the top of your range) of the first period after the change. Comparison columns are optional but make the answer sharper.</p>
+<p><a href="https://counterfact-site.vercel.app/sheets.html" target="_blank">Full guide</a></p>
+<script>Office.onReady(() => {});</script></body></html>

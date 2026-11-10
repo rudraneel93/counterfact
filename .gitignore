@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+dist/
+.pytest_cache/
+anchor-*.txt
+anchor-*.txt.ots
+*.npy
+.env

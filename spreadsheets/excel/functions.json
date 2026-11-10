@@ -1,0 +1,28 @@
+{
+  "functions": [
+    {
+      "id": "EFFECT",
+      "name": "EFFECT",
+      "description": "Effect of a change: verdict, effect per period, 90% range low, 90% range high, effect in %.",
+      "helpUrl": "https://counterfact-site.vercel.app/sheets.html",
+      "result": { "type": "any", "dimensionality": "matrix" },
+      "parameters": [
+        { "name": "metric", "description": "The number you care about, oldest first (one column).", "type": "number", "dimensionality": "matrix" },
+        { "name": "change_row", "description": "Row of the first period after the change, counted from the top of metric (1 = first).", "type": "number" },
+        { "name": "comparisons", "description": "Optional: series the change could not have affected, same rows, one column each.", "type": "number", "dimensionality": "matrix", "optional": true }
+      ]
+    },
+    {
+      "id": "WITHOUT",
+      "name": "WITHOUT",
+      "description": "What the metric would most likely have been without the change, for each period after it, with 90% low and high.",
+      "helpUrl": "https://counterfact-site.vercel.app/sheets.html",
+      "result": { "type": "number", "dimensionality": "matrix" },
+      "parameters": [
+        { "name": "metric", "description": "The number you care about, oldest first (one column).", "type": "number", "dimensionality": "matrix" },
+        { "name": "change_row", "description": "Row of the first period after the change (1 = first value).", "type": "number" },
+        { "name": "comparisons", "description": "Optional comparison series.", "type": "number", "dimensionality": "matrix", "optional": true }
+      ]
+    }
+  ]
+}

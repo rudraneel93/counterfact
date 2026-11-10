@@ -1,0 +1,102 @@
+{
+ "observed_confounder": {
+  "n": 76,
+  "v4_cov": 0.895,
+  "v4_err": 0.73,
+  "naive_err": 0.71,
+  "v4_ok": 76,
+  "v2_cov": 0.947,
+  "v2_err": 0.68,
+  "v2_ok": 76
+ },
+ "all": {
+  "n": 800,
+  "v4_cov": 0.874,
+  "v4_err": 0.66,
+  "naive_err": 0.66,
+  "v4_ok": 800,
+  "v2_cov": 0.927,
+  "v2_err": 0.61,
+  "v2_ok": 800
+ },
+ "instrumental_variable": {
+  "n": 85,
+  "v4_cov": 0.918,
+  "v4_err": 0.59,
+  "naive_err": 0.65,
+  "v4_ok": 85,
+  "v2_cov": 0.965,
+  "v2_err": 0.53,
+  "v2_ok": 85
+ },
+ "back_door": {
+  "n": 84,
+  "v4_cov": 0.845,
+  "v4_err": 0.71,
+  "naive_err": 0.66,
+  "v4_ok": 84,
+  "v2_cov": 0.929,
+  "v2_err": 0.66,
+  "v2_ok": 84
+ },
+ "front_door": {
+  "n": 98,
+  "v4_cov": 0.898,
+  "v4_err": 0.54,
+  "naive_err": 0.59,
+  "v4_ok": 98,
+  "v2_cov": 0.939,
+  "v2_err": 0.56,
+  "v2_ok": 98
+ },
+ "bow_graph": {
+  "n": 98,
+  "v4_cov": 0.765,
+  "v4_err": 0.74,
+  "naive_err": 0.69,
+  "v4_ok": 98,
+  "v2_cov": 0.878,
+  "v2_err": 0.66,
+  "v2_ok": 98
+ },
+ "bi_variate": {
+  "n": 104,
+  "v4_cov": 0.885,
+  "v4_err": 0.66,
+  "naive_err": 0.63,
+  "v4_ok": 104,
+  "v2_cov": 0.904,
+  "v2_err": 0.61,
+  "v2_ok": 104
+ },
+ "unobserved_confounder": {
+  "n": 83,
+  "v4_cov": 0.88,
+  "v4_err": 0.63,
+  "naive_err": 0.62,
+  "v4_ok": 83,
+  "v2_cov": 0.928,
+  "v2_err": 0.58,
+  "v2_ok": 83
+ },
+ "mediator": {
+  "n": 81,
+  "v4_cov": 0.914,
+  "v4_err": 0.71,
+  "naive_err": 0.75,
+  "v4_ok": 81,
+  "v2_cov": 0.938,
+  "v2_err": 0.67,
+  "v2_ok": 81
+ },
+ "confounder_mediator": {
+  "n": 91,
+  "v4_cov": 0.879,
+  "v4_err": 0.65,
+  "naive_err": 0.62,
+  "v4_ok": 91,
+  "v2_cov": 0.934,
+  "v2_err": 0.59,
+  "v2_ok": 91
+ }
+}
